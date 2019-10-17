@@ -20,7 +20,8 @@
         </tr>
       </thead>
       <tbody>
-        <!-- Insert movie rows here -->
+        
+                <!-- Insert movie rows here -->
       </tbody>
     </table>
   </div>
@@ -35,11 +36,29 @@
       method: "GET"
     }).then(function(response) {
 
+        $('.table>tbody').append('<tr><td></td><td></td><td></td></tr>');
+        $('.table>tbody>tr>td:eq(0)').text(response.Title);
+        $('.table>tbody>tr>td:eq(1)').text(response.Year);
+        $('.table>tbody>tr>td:eq(2)').text(response.Actors);
+
       // Obtain a reference to the tbody element in the DOM
       // Create and save a reference to new empty table row
       // Create and save references to 3 td elements containing the Title, Year, and Actors from the AJAX response object
       // Append the td elements to the new table row
       // Append the table row to the tbody element
+    });
+    var movie = "The Master";
+    var queryURL = "https://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=trilogy";
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+    }).then(function(response) {
+
+        $('.table>tbody').append('<tr><td></td><td></td><td></td></tr>');
+        $('.table>tbody>tr>td:eq(0)').text(response.Title);
+        $('.table>tbody>tr>td:eq(1)').text(response.Year);
+        $('.table>tbody>tr>td:eq(2)').text(response.Actors);
+
     });
 
     // Repeat the above logic to add rows for two more movies of your choice
